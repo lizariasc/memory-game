@@ -52,6 +52,7 @@ const cardArray = [
 cardArray.sort(() => 0.5 - Math.random());
 
 const gridDisplay = document.querySelector('#grid');
+const resultDisplay = document.querySelector('#result')
 let cardsChosen = [];
 let cardsChosenIds = [];
 const cardWon = [];
@@ -90,8 +91,13 @@ function checkMath() {
         cards[optionOneId].setAttribute('src', 'images/blank.png');
         cards[optionTwoId].setAttribute('src', 'images/blank.png');
     }
+    resultDisplay.textContent = cardWon.length;
     cardsChosen = [];
     cardsChosenIds = [];
+
+    if(cardWon.length == cardArray.length /2) {
+       resultDisplay.innerHTML = 'Congratulations! You found them all!'
+    }
 }
 
 function flipCard() {
