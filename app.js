@@ -72,13 +72,23 @@ createBoard();
 
 function checkMath() {
     const cards = document.querySelectorAll('img')
+    const optionOneId = cardsChosenIds[0];
+    const optionTwoId = cardsChosenIds[1];
+
+    if(optionOneId == optionTwoId) {
+        window.alert('you have clicked the same image!')
+    }
+
     if(cardsChosen[0] == cardsChosen[1]) {
         window.alert('you found a match!')
-        cards[cardsChosenIds[0]].setAttribute('src', 'images/white.png');
-        cards[cardsChosenIds[1]].setAttribute('src', 'images/white.png');
-        cards[cardsChosenIds[0]].removeEventListener('click', flipCard);
-        cards[cardsChosenIds[1]].removeEventListener('click', flipCard);
+        cards[optionOneId].setAttribute('src', 'images/white.png');
+        cards[optionTwoId].setAttribute('src', 'images/white.png');
+        cards[optionOneId].removeEventListener('click', flipCard);
+        cards[optionTwoId].removeEventListener('click', flipCard);
         cardWon.push(cardsChosen)
+    } else {
+        cards[optionOneId].setAttribute('src', 'images/blank.png');
+        cards[optionTwoId].setAttribute('src', 'images/blank.png');
     }
     cardsChosen = [];
     cardsChosenIds = [];
